@@ -40,6 +40,30 @@ from pandora.training.utils import (
 
 
 class HuggingfaceModel:
+    """
+    Wrapper for Hugging Face Causal Language Models with training and evaluation utilities.
+
+    Handles model initialization, fine-tuning (with PEFT adapters), optimizer and scheduler setup,
+    checkpointing, and evaluation. Uses the Accelerate library for distributed training and logging.
+
+    Attributes:
+        MODEL_INPUT_VARS (list): List of input variable names for the model.
+        config (dict): Model and training configuration.
+        device (str): Device to use ('cuda' or 'cpu').
+        model_kwargs (dict): Model-specific keyword arguments.
+        optimizer_kwargs (dict): Optimizer configuration.
+        scheduler_kwargs (dict): Scheduler configuration.
+        network (torch.nn.Module): The underlying Hugging Face model.
+        tokenizer (transformers.PreTrainedTokenizer): Tokenizer for the model.
+        optimizer (torch.optim.Optimizer): Optimizer instance.
+        scheduler (torch.optim.lr_scheduler): Scheduler instance.
+        epoch (int): Current epoch.
+        model_dir (str): Directory for saving/loading the model.
+        torch_dtype (torch.dtype): Precision for model weights.
+        accelerator (Accelerator): Accelerate instance for distributed training.
+        id (str): Unique identifier for the model instance.
+    """
+
     MODEL_INPUT_VARS = ["input_ids", "attention_mask", "labels"]
 
     def __init__(
@@ -50,6 +74,16 @@ class HuggingfaceModel:
         log_with="wandb",
         **kwargs,
     ):
+        """
+        Initialize the HuggingfaceModel.
+
+        Args:
+            model_dir (str, optional): Directory to load the model from.
+            config (dict, optional): Model and training configuration.
+            device (str): Device to use ('cuda' or 'cpu').
+            log_with (str): Logging backend for Accelerate.
+            **kwargs: Additional keyword arguments.
+        """
         self.config = deepcopy(config)
         self.device = device
         if self.config is not None:
@@ -113,10 +147,10 @@ class HuggingfaceModel:
         Run inference on the model.
 
         Args:
-            prompt (str): Prompt in natural language, or several prompts
+            prompt (str or List[str]): Prompt(s) in natural language.
 
         Returns:
-            str: Completion of the prompt in natural language
+            List[str]: Completions of the prompt(s) in natural language.
         """
         self.network.eval()
         inputs = self.tokenizer(
@@ -140,6 +174,9 @@ class HuggingfaceModel:
             )
 
     def _initialize_network(self):
+        """
+        Initialize the Hugging Face model and tokenizer, optionally with PEFT adapters for fine-tuning.
+        """
         model_name = self.model_kwargs["name"]
         is_finetuning = self.model_kwargs.get("finetuning", False)
         if is_finetuning:
@@ -185,6 +222,10 @@ class HuggingfaceModel:
         """
         Initializes the optimizer and scheduler with optimizer_kwargs and scheduler_kwargs, respectively.
         The kwargs are stored in attributes as metadata for saving/loading purposes.
+
+        Args:
+            optimizer_kwargs (dict): Optimizer configuration.
+            scheduler_kwargs (dict): Scheduler configuration.
         """
         self.optimizer_kwargs = optimizer_kwargs
         self.optimizer = get_optimizer_from_kwargs(
@@ -197,6 +238,12 @@ class HuggingfaceModel:
         self,
         model_dir: str,
     ):
+        """
+        Save the model, tokenizer, optimizer, scheduler, and metadata to the specified directory.
+
+        Args:
+            model_dir (str): Directory to save the model and related files.
+        """
         model_dir = Path(model_dir)
         metadata = {
             "model_kwargs": self.model_kwargs,
@@ -222,7 +269,7 @@ class HuggingfaceModel:
 
     def load_model(self, model_dir: str):
         """
-        Load an existing model, optimizer, and scheduler from the given directory
+        Load an existing model, optimizer, and scheduler from the given directory.
 
         Args:
             model_dir (str): Path to the saved model.
@@ -259,6 +306,19 @@ class HuggingfaceModel:
         extended_dataloaders={},
         **kwargs,
     ):
+        """
+        Train the model using the provided dataloaders and runtime limits.
+
+        Args:
+            train_dir (str): Directory to save checkpoints and logs.
+            train_loader (DataLoader): Training data loader.
+            test_loader (DataLoader): Test data loader.
+            validation_loader (DataLoader): Validation data loader.
+            runtime_limits (RuntimeLimits): Object to control training duration.
+            trackers_kwargs (dict, optional): Additional tracker configuration.
+            extended_dataloaders (dict, optional): Additional dataloaders for evaluation.
+            **kwargs: Additional training parameters.
+        """
         # prepare model components for training
         (
             self.network,
@@ -494,6 +554,18 @@ class HuggingfaceModel:
 
 
 def evaluate_step(model: HuggingfaceModel, validation_loader):
+    """
+    Evaluate the model on the provided validation loader and compute metrics.
+
+    Args:
+        model (HuggingfaceModel): The model to evaluate.
+        validation_loader (DataLoader): DataLoader for validation data.
+
+    Returns:
+        tuple: (metric_dict, evals)
+            metric_dict (dict): Dictionary of computed metrics.
+            evals (pd.DataFrame): DataFrame with predictions and true labels.
+    """
     model.network.eval()
     glue_metric = evaluate.load("glue", "mrpc")
     roc_auc_metric = evaluate.load("roc_auc")

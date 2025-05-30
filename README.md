@@ -50,7 +50,15 @@ This project uses data from the UK Biobank.For a detailed description of data pr
 
 ### Training
 
-ToDo.
+To start training the model, use the following command:
+
+```bash
+accelerate launch pandora/training/train_model.py --train_dir={base_dir} --device=cuda
+```
+
+Replace `{base_dir}` with the path to your training directory containing the configuration file (such as [`config/training/train_settings.yaml`](config/training/train_settings.yaml)). All model checkpoints and predictions will be stored in this file.
+
+> Note: `accelerate launch` enables multi-GPU training when multiple GPUs are available.
 
 ### Inference
 

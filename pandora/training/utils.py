@@ -20,6 +20,7 @@ from transformers import DataCollatorForTokenClassification
 from exploration.evaluation.evaluation_utils import find_highest_epoch_step
 from pandora.data import prompt, ukb_features
 
+# Default configuration dictionaries for finetuning approaches
 FINETUNING_DEFAULT_DICT = {
     "lora": {
         "task_type": TaskType.CAUSAL_LM,
@@ -38,6 +39,7 @@ FINETUNING_DEFAULT_DICT = {
     },
 }
 
+# Mapping of scheduler names to PyTorch scheduler classes
 SCHEDULER_DICT = {
     "linear": torch.optim.lr_scheduler.LambdaLR,
     "cosine": torch.optim.lr_scheduler.CosineAnnealingLR,
@@ -49,7 +51,7 @@ SCHEDULER_DICT = {
 class RuntimeLimits:
     """
     Keeps track of the runtime limits (time limit, epoch limit, max. number
-    of epochs for model).
+    of epochs for model). Used to control training duration and early stopping.
     """
 
     def __init__(
@@ -60,18 +62,16 @@ class RuntimeLimits:
         epoch_start: int = None,
     ):
         """
-
         Parameters
         ----------
         max_time_per_run: float = None
-            maximum time for run, in seconds
-            [soft limit, break only after full epoch]
+            Maximum time for run, in seconds (soft limit, break only after full epoch).
         max_epochs_per_run: int = None
-            maximum number of epochs for run
+            Maximum number of epochs for run.
         max_epochs_total: int = None
-            maximum total number of epochs for model
+            Maximum total number of epochs for model.
         epoch_start: int = None
-            start epoch of run
+            Start epoch of run.
         """
         self.max_time_per_run = max_time_per_run
         self.max_epochs_per_run = max_epochs_per_run
@@ -79,7 +79,7 @@ class RuntimeLimits:
         self.epoch_start = epoch_start
         self.time_start = time.time()
         if max_epochs_per_run is not None and epoch_start is None:
-            raise ValueError("epoch_start required to check " "max_epochs_per_run.")
+            raise ValueError("epoch_start required to check max_epochs_per_run.")
 
     def limits_exceeded(self, epoch: int = None):
         """
@@ -92,14 +92,14 @@ class RuntimeLimits:
         Returns
         -------
         limits_exceeded: bool
-            flag whether runtime limits are exceeded and run should be stopped;
-            if limits_exceeded = True, this prints a message for the reason
+            Flag whether runtime limits are exceeded and run should be stopped.
+            If True, prints a message for the reason.
         """
         # check time limit for run
         if self.max_time_per_run is not None:
             if time.time() - self.time_start >= self.max_time_per_run:
                 logging.info(
-                    f"Stop run: Time limit of {self.max_time_per_run} s " f"exceeded."
+                    f"Stop run: Time limit of {self.max_time_per_run}s exceeded."
                 )
                 return True
         # check epoch limit for run
@@ -133,7 +133,7 @@ class RuntimeLimits:
         Returns
         -------
         limits_exceeded: bool
-            flag whether local runtime limits are exceeded
+            Flag whether local runtime limits are exceeded.
         """
         # check time limit for run
         if self.max_time_per_run is not None:
@@ -153,6 +153,20 @@ def get_optimizer_from_kwargs(
     model_parameters: Iterable,
     **optimizer_kwargs,
 ):
+    """
+    Select and instantiate a PyTorch optimizer from keyword arguments.
+
+    Parameters
+    ----------
+    model_parameters : Iterable
+        Model parameters to optimize.
+    **optimizer_kwargs
+        Must include 'type' (e.g. 'adamw') and other optimizer-specific kwargs.
+
+    Returns
+    -------
+    optimizer : torch.optim.Optimizer
+    """
     optimizers_dict = {
         "adagrad": torch.optim.Adagrad,
         "adam": torch.optim.Adam,
@@ -170,6 +184,20 @@ def get_scheduler_from_kwargs(
     optimizer: torch.optim.Optimizer,
     **scheduler_kwargs,
 ):
+    """
+    Select and instantiate a PyTorch learning rate scheduler from keyword arguments.
+
+    Parameters
+    ----------
+    optimizer : torch.optim.Optimizer
+        The optimizer to schedule.
+    **scheduler_kwargs
+        Must include 'type' (e.g. 'step') and other scheduler-specific kwargs.
+
+    Returns
+    -------
+    scheduler : torch.optim.lr_scheduler._LRScheduler
+    """
     schedulers_dict = {
         "step": torch.optim.lr_scheduler.StepLR,
         "cosine": torch.optim.lr_scheduler.CosineAnnealingLR,
@@ -188,7 +216,7 @@ def get_finetuning_config(type, **kwargs) -> PeftConfig:
     Parameters
     ----------
     type : str
-        The finetuning approach to use.
+        The finetuning approach to use ('lora', 'prefix-tuning', or 'prompt-adaption').
     **kwargs
         Additional arguments to pass to the finetuning config.
 
@@ -214,7 +242,21 @@ def get_finetuning_config(type, **kwargs) -> PeftConfig:
 
 
 def get_latest_checkpoint_dir(train_dir, fixed_epoch=None):
-    """Pattern: checkpoint_{epoch}_{step}"""
+    """
+    Find the latest checkpoint directory in a training directory.
+
+    Parameters
+    ----------
+    train_dir : str
+        Path to the training directory.
+    fixed_epoch : int or None
+        If provided, only consider checkpoints from this epoch.
+
+    Returns
+    -------
+    checkpoint_path : str or None
+        Path to the latest checkpoint directory, or None if not found.
+    """
     try:
         max_filename = find_highest_epoch_step(
             os.listdir(train_dir),
@@ -237,6 +279,18 @@ def get_latest_checkpoint_dir(train_dir, fixed_epoch=None):
 def get_module_names(model, pattern=r"\((\w+)\): Linear"):
     """
     Get the names of the modules in the model that match the pattern.
+
+    Parameters
+    ----------
+    model : torch.nn.Module
+        The model to inspect.
+    pattern : str
+        Regex pattern to match module names.
+
+    Returns
+    -------
+    target_modules : list of str
+        List of unique module names matching the pattern.
     """
     model_modules = str(model.modules)
     linear_layer_names = re.findall(pattern, model_modules)
@@ -250,26 +304,47 @@ def get_module_names(model, pattern=r"\((\w+)\): Linear"):
 
 def create_id(name: str) -> str:
     """
+    Create a unique identifier composed of the model name and the initialization time.
+
     Parameters
     ----------
     name : str
         The name of the pre-trained model.
-    Create a unique identifier composed of the model name and the initialization time
+
+    Returns
+    -------
+    id_str : str
+        Unique identifier string.
     """
     current_time = str(time.time()).split(".")[0]
     return f"{name}_{current_time}"
 
 
 def as_dict(**kwargs):
+    """
+    Return the keyword arguments as a dictionary.
+    """
     return kwargs
 
 
 def get_nb_trainable_parameters(self) -> tuple[int, int]:
+    """
+    Returns the number of trainable parameters and the number of all parameters in the model.
+
+    Parameters
+    ----------
+    self : nn.Module
+        The model instance.
+
+    Returns
+    -------
+    trainable_params : int
+        Number of trainable parameters.
+    all_param : int
+        Total number of parameters.
+    """
     # get_nb_trainable_parameters is only defined for peft models, but not for normal transformers models
     # taken from https://github.com/huggingface/peft/blob/v0.11.0/src/peft/peft_model.py#L569
-    r"""
-    Returns the number of trainable parameters and the number of all parameters in the model.
-    """
     trainable_params = 0
     all_param = 0
     for _, param in self.named_parameters():
@@ -298,7 +373,14 @@ def get_nb_trainable_parameters(self) -> tuple[int, int]:
 
 
 def set_default_chat_template(tokenizer):
-    """Explicitly sets the default chat template for the tokenizer to avoid a huggingface warning"""
+    """
+    Explicitly sets the default chat template for the tokenizer to avoid a Hugging Face warning.
+
+    Parameters
+    ----------
+    tokenizer : transformers.PreTrainedTokenizer
+        The tokenizer to set the chat template for.
+    """
     # tokenizer.chat_template = tokenizer.default_chat_template
     if tokenizer.chat_template is None:
         tokenizer.chat_template = "{% for message in messages %}{{ message.content }}{{ eos_token }}{% endfor %}"

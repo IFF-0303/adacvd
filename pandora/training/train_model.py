@@ -24,6 +24,12 @@ RUNTIME_LIMITS = {
 
 
 def parse_args():
+    """
+    Parse command-line arguments for training.
+
+    Returns:
+        argparse.Namespace: Parsed arguments with train_dir, device, and num_samples.
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--train_dir",
@@ -45,6 +51,14 @@ def parse_args():
 
 
 def main():
+    """
+    Main training routine:
+        - Loads configuration and dataset.
+        - Initializes or resumes the model.
+        - Prepares dataloaders and collators.
+        - Optionally sets up extended evaluation.
+        - Trains the model and saves checkpoints.
+    """
     logger = logging.getLogger()
     args = parse_args()
     logger.info(f"args: {args.__dict__}")
@@ -54,9 +68,11 @@ def main():
 
     set_seed(0)
 
+    # Load configuration
     with open(join(args.train_dir, "train_settings.yaml"), "r") as f:
         config = yaml.safe_load(f)
 
+    # Set random seed if specified in config
     if config["training"].get("random_seed", None) is not None:
         set_seed(config["training"]["random_seed"])
         logger.info(f"Set random seed to {config['training']['random_seed']}")
@@ -64,6 +80,7 @@ def main():
     config["train_dir"] = args.train_dir
     config["num_samples"] = args.num_samples
 
+    # Load dataset
     dataset = load_prompt_parts(
         data_config=config["data"], num_samples=args.num_samples
     )
@@ -72,6 +89,7 @@ def main():
         f"Dataset sizes: Train: {len(dataset['train'])}, Test: {len(dataset['test'])}, Validation: {len(dataset['validation'])}"
     )
 
+    # Resume from checkpoint if specified
     if config["model"].get("resume_training", False):
         logger.info("Resuming training")
         if config["model"].get("model_checkpoint") is not None:
@@ -89,7 +107,7 @@ def main():
         logger.info("Building model from scratch")
         model = HuggingfaceModel(config=config, device=args.device)
 
-    # translate parameters for multi-gpu training
+    # Adjust batch size and scheduler for multi-GPU training
     # batch_size = effective_batch_size = batch_size_per_device * num_gpus
     num_gpus = model.accelerator.num_processes
     config["training"]["batch_size_per_device"] = (
@@ -119,12 +137,13 @@ def main():
         config["training"]["scheduler"],
     )
 
-    # write train eids to json file
+    # Optionally save train eids for reproducibility
     if config["data"].get("num_training_samples") is not None:
         eids = {"train": dataset["train"]["eid"]}
         with open(join(args.train_dir, "train_eids.json"), "w") as f:
             json.dump(eids, f)
 
+    # Prepare data collator and datasets
     data_collator = DataCollatorForTokenClassification(
         model.tokenizer, padding=True, pad_to_multiple_of=8
     )
@@ -146,7 +165,7 @@ def main():
         fix_seed=True,
     )
 
-    # extended evaluation: evaluate on different feature groups during training
+    # Extended evaluation: evaluate on different feature groups during training
     extended_evaluation = config["training"].get("extended_evaluation", False)
     extended_datalaoders = {}
     if extended_evaluation:
@@ -188,6 +207,7 @@ def main():
                 shuffle=False,
             )
 
+    # Prepare main dataloaders
     train_dataloader = DataLoader(
         train_dataset,
         collate_fn=data_collator,
@@ -207,12 +227,14 @@ def main():
         shuffle=False,
     )
 
+    # Set up runtime limits for training
     runtime_limits = RuntimeLimits(
         epoch_start=model.epoch,
         max_epochs_total=config["training"]["epochs"],
         **RUNTIME_LIMITS,
     )
 
+    # Start training
     model.train(
         train_dir=args.train_dir,
         train_loader=train_dataloader,
