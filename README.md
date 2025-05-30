@@ -1,4 +1,4 @@
-# `AdaCVD`: Adaptable Cardiovascular Disease Risk Prediction from Heterogeneous Data using Large Language Models
+# `AdaCVD` — Adaptable Cardiovascular Disease Risk Prediction from Heterogeneous Data using Large Language Models
 
 Authors: Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
 
