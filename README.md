@@ -44,7 +44,7 @@ pip install -e .
 
 ## Data
 
-ToDo.
+This project uses data from the UK Biobank.For a detailed description of data preprocessing, see [`docuentation/ukb_data_preparation.md`](documentation/ukb_data_preparation.md).
 
 ## Model Training & Inference
 

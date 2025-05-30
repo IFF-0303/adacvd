@@ -1,7 +1,9 @@
+name: adacvd
 channels:
   - nvidia
   - pytorch
   - conda-forge
+channel_priority: strict
 dependencies:
   - python=3.10
   - pytorch

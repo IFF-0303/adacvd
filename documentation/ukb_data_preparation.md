@@ -1,7 +1,5 @@
 # UK Biobank data preparation
 
-Here, we describe how to process the UK Biobank (UKB) dataset.
-
 ## Raw UKB data
 
 The raw UKB dataset is stored in `assets/ukb/...` and consists of the following files:
