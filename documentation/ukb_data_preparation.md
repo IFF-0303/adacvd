@@ -38,3 +38,13 @@ To run the preprocessing, run the following command. Make sure the desired featu
 ```bash
 python scripts/preprocessing/submit_preprocessing_jobs.py --config_file config/ukb_data/all_feature_groups.yaml
 ```
+
+## Clinical Notes
+
+To generate clinical notes based on the structured inputs, run the following command:
+
+```bash
+python exploration/text_datasets/generate_texts.py --train_dir={train_dir} --device cuda
+```
+
+The notes are saved as a CSV file.

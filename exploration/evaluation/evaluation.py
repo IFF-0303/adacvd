@@ -19,6 +19,14 @@ from pandora.utils.metrics import compute_bootstrapped_metrics, compute_roc_curv
 
 
 def parse_args():
+    """
+    Parse command-line arguments for evaluation.
+
+    Returns
+    -------
+    argparse.Namespace
+        Parsed arguments including prediction_dir, eval_dir, subgroup, evaluation_subset, and target.
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--prediction_dir",
@@ -48,8 +56,24 @@ def parse_args():
 
 def get_settings(dir: Path) -> dict:
     """
-    Return settings dictionary from directory
-    (either train_settings.yaml or inference_settings.yaml).
+    Load settings dictionary from a directory.
+
+    Looks for 'train_settings.yaml', 'inference_settings.yaml', or 'config.yaml'.
+
+    Parameters
+    ----------
+    dir : Path
+        Directory to search for settings files.
+
+    Returns
+    -------
+    settings : dict
+        Loaded settings dictionary.
+
+    Raises
+    ------
+    ValueError
+        If no settings file is found in the directory.
     """
     if (dir / "train_settings.yaml").is_file():
         with open(dir / "train_settings.yaml", "r") as f:
@@ -67,7 +91,20 @@ def get_settings(dir: Path) -> dict:
 
 def create_name_from_dir(dir: Path) -> str:
     """
-    Create a name from the directory.
+    Create a name string from a directory path.
+
+    If the directory is under RESULTS_PATH, returns the relative path.
+    Otherwise, returns the directory name.
+
+    Parameters
+    ----------
+    dir : Path
+        Directory path.
+
+    Returns
+    -------
+    name : str
+        Name string derived from the directory.
     """
     if RESULTS_PATH in dir.parents:
         name = dir.relative_to(RESULTS_PATH)  # TODO: replace / by _? or keep nested?
@@ -77,6 +114,24 @@ def create_name_from_dir(dir: Path) -> str:
 
 
 def get_evals_path(dir: Path) -> Path:
+    """
+    Find the path to the latest or best evaluation CSV file in a directory.
+
+    Parameters
+    ----------
+    dir : Path
+        Directory to search for evals CSV files.
+
+    Returns
+    -------
+    file : Path
+        Path to the selected evals CSV file.
+
+    Raises
+    ------
+    ValueError
+        If no evals CSV files are found in the directory.
+    """
     # find latest evals.csv files
     files = list(dir.glob("*evals*.csv"))
     # logger.info(files)
@@ -102,6 +157,20 @@ def evaluate(
     settings: dict,
     n_bootstrap_rounds: int = 5000,
 ):
+    """
+    Evaluate predictions and save metrics, ROC curve values, settings, and evaluation subset.
+
+    Parameters
+    ----------
+    evals_subset : pd.DataFrame
+        DataFrame containing true and predicted values for evaluation.
+    evaluation_dir : Path
+        Directory to save evaluation results.
+    settings : dict
+        Settings dictionary to save alongside results.
+    n_bootstrap_rounds : int, optional
+        Number of bootstrap rounds for metric computation (default: 5000).
+    """
     metrics = compute_bootstrapped_metrics(
         y_true=evals_subset["y_true"],
         y_pred=evals_subset["y_pred_score"],

@@ -66,7 +66,13 @@ ToDo.
 
 ## Baselines
 
-ToDo.
+To train the baseline models, use the following command:
+
+```bash
+python exploration/ml_baselines/train_ml_baseline.py --model lgbm --config config/training/train_settings.yaml
+```
+
+Adjust the model or config file depending on which model you want to run.
 
 ## Evaluation
 
