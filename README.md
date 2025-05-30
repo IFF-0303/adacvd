@@ -1,4 +1,4 @@
-# AdaCVD
+# `AdaCVD`: Adaptable Cardiovascular Disease Risk Prediction from Heterogeneous Data using Large Language Models
 
 Authors: Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
 
@@ -70,7 +70,7 @@ To train the baseline models, use the following command:
 python exploration/ml_baselines/train_ml_baseline.py --model lgbm --config config/training/train_settings.yaml
 ```
 
-Adjust the model or config file depending on which model you want to run.
+Adjust the model or config file depending on which model you want to train.
 
 ## Evaluation
 
