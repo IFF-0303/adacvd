@@ -1,6 +1,6 @@
 # `AdaCVD` — Adaptable Cardiovascular Disease Risk Prediction from Heterogeneous Data using Large Language Models
 
-Authors: Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
+**Authors:** Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
 
 The preprint is available on [ArXiv](...).
 
@@ -58,7 +58,7 @@ To start training the model, use the following command:
 accelerate launch adacvd/training/train_model.py --train_dir={base_dir} --device=cuda
 ```
 
-Replace `{base_dir}` with the path to your training directory containing the configuration file (such as [`config/training/train_settings.yaml`](config/training/train_settings.yaml)). All model checkpoints and predictions will be stored in this file.
+Replace `{base_dir}` with the path to your training directory containing the configuration file (such as [`config/training/train_settings.yaml`](config/training/train_settings.yaml)). All model checkpoints and predictions will be stored in this directory.
 
 > Note: `accelerate launch` enables multi-GPU training when multiple GPUs are available.
 
