@@ -1,10 +1,14 @@
 # AdaCVD
 
-ToDo: Introduction.
+Authors: Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
 
-## Overview
+The preprint is available on [ArXiv](...).
 
 ![AdaCVD Project Overview](fig-overview.png)
+
+Cardiovascular disease (CVD) risk prediction models are essential for identifying high-risk individuals and guiding preventive actions. However, existing models struggle with the challenges of real-world clinical practice as they oversimplify patient profiles, rely on rigid input schemas, and are sensitive to distribution shifts. We developed `AdaCVD`, an adaptable CVD risk prediction framework built on large language models extensively fine-tuned on over half a million participants from the UK Biobank. In benchmark comparisons, `AdaCVD` surpasses established risk scores and standard machine learning approaches, achieving state-of-the-art performance. Crucially, for the first time, it addresses key clinical challenges across three dimensions: it flexibly incorporates comprehensive yet variable patient information; it seamlessly integrates both structured data and unstructured text; and it rapidly adapts to new patient populations using minimal additional data. In stratified analyses, it demonstrates robust performance across demographic, socioeconomic, and clinical subgroups, including underrepresented cohorts. `AdaCVD` offers a promising path toward more flexible, AI-driven clinical decision support tools suited to the realities of heterogeneous and dynamic healthcare environments.
+
+This repository contains the code to train the `AdaCVD` model and all baselines.
 
 ## 🛠️ Installation
 
@@ -44,11 +48,9 @@ pip install -e .
 
 ## Data
 
-This project uses data from the UK Biobank.For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md).
+This project uses data from the UK Biobank. We provide code for processing the UK Biobank into meaningful representations that can be used for model training. For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md). 
 
 ## Model Training & Inference
-
-### Training
 
 To start training the model, use the following command:
 
@@ -59,10 +61,6 @@ accelerate launch adacvd/training/train_model.py --train_dir={base_dir} --device
 Replace `{base_dir}` with the path to your training directory containing the configuration file (such as [`config/training/train_settings.yaml`](config/training/train_settings.yaml)). All model checkpoints and predictions will be stored in this file.
 
 > Note: `accelerate launch` enables multi-GPU training when multiple GPUs are available.
-
-### Inference
-
-ToDo.
 
 ## Baselines
 
@@ -76,11 +74,13 @@ Adjust the model or config file depending on which model you want to run.
 
 ## Evaluation
 
-ToDo.
+To compute the evaluation metrics for a prediciton file, run the following command:
 
 ```bash
-exploration/frederike/evaluation/draft_evaluation.py --prediction_dir={prediction_dir} --eval_dir={eval_dir} --evaluation_subset={Path(evaluation_subset)} --target={target}"
+exploration/evaluation/evaluation.py --prediction_dir={prediction_dir} --eval_dir={eval_dir} --evaluation_subset={evaluation_subset} --target={target}"
 ```
 
-##
+## Citation
+In case you found our work useful, please consider citing us:
 
+ToDo.
