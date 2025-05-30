@@ -50,9 +50,13 @@ pip install -e .
 
 This project uses data from the UK Biobank. We provide code for processing the UK Biobank into meaningful representations that can be used for model training. For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md). 
 
-## Model Training & Inference
+> Note: Access to UK Biobank data requires institutional approval.
 
-To start training the model, use the following command:
+## Model Training
+
+Training the model involves fine-tuning the `Mistral-7B-Instruct` model with a LoRA adapter. Efficient training therefore requires a GPU compute node with approximately $\leq 50$ GB of memory. All training was done on an NVIDIA A100-SXM4-80GB with 8 GPU cores. 
+
+To start model training, use the following command:
 
 ```bash
 accelerate launch adacvd/training/train_model.py --train_dir={base_dir} --device=cuda
@@ -71,6 +75,8 @@ python exploration/ml_baselines/train_ml_baseline.py --model lgbm --config confi
 ```
 
 Adjust the model or config file depending on which model you want to train.
+
+The medical risk scores are implemented in [`adacvd/risk_scores`](adacvd/risk_scores).
 
 ## Evaluation
 
