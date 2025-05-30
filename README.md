@@ -10,7 +10,7 @@ Cardiovascular disease (CVD) risk prediction models are essential for identifyin
 
 This repository contains the code to train the `AdaCVD` model and all baselines.
 
-## 🛠️ Installation
+## Installation
 
 This project uses `micromamba` — a fast, minimal installer for `conda` environments. It's a lightweight alternative to `conda` that supports the same environment and package management commands. If you're already using `conda`, you can adapt the steps accordingly, but we recommend `micromamba` for faster setups. If you don’t have `micromamba` installed, follow the [official installation guide](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html).
 

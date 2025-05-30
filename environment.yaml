@@ -40,9 +40,7 @@ dependencies:
   - sentencepiece
   - scikit-survival
   - lifelines
-  - openai
   - bitsandbytes
-  - umap-learn
   - h5py
   - pip:
       - wget
