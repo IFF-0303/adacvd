@@ -52,7 +52,7 @@ This project uses data from the UK Biobank. We provide code for processing the U
 
 > Note: Access to UK Biobank data requires institutional approval.
 
-## Model Training & Inference
+## Model Training
 
 Training the model involves fine-tuning the `Mistral-7B-Instruct` model with a LoRA adapter. Efficient training therefore requires a GPU compute node with approximately $\leq 50$ GB of memory. All training was done on an NVIDIA A100-SXM4-80GB with 8 GPU cores. 
 
