@@ -25,9 +25,9 @@ from sklearn.metrics import (
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from pandora.data.ukb_data_utils import WANDB_ENTITY
-from pandora.training.dataset import get_in_text_tokenization
-from pandora.training.utils import (
+from adacvd.data.ukb_data_utils import WANDB_ENTITY
+from adacvd.training.dataset import get_in_text_tokenization
+from adacvd.training.utils import (
     RuntimeLimits,
     as_dict,
     create_id,

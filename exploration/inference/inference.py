@@ -11,11 +11,11 @@ from accelerate.utils import set_seed
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, DataCollatorForTokenClassification
 
-import pandora.utils.logger
-from pandora.data.ukb_data_utils import WANDB_ENTITY
-from pandora.training.dataset import PromptDataset, load_prompt_parts
-from pandora.training.model import HuggingfaceModel, evaluate_step
-from pandora.training.utils import get_latest_checkpoint_dir
+import adacvd.utils.logger
+from adacvd.data.ukb_data_utils import WANDB_ENTITY
+from adacvd.training.dataset import PromptDataset, load_prompt_parts
+from adacvd.training.model import HuggingfaceModel, evaluate_step
+from adacvd.training.utils import get_latest_checkpoint_dir
 
 
 def parse_args():
@@ -75,7 +75,7 @@ def main():
         train_dir, fixed_epoch=inference_config.get("fixed_epoch", None)
     )
     checkpoint_dir = Path(
-        "/fast/groups/hfm-users/pandora-med-box/results/2025_03_10_flexible_from_full/checkpoint_3_n128000"
+        ... # replace with the path to the model checkpoint
     )
     logger.info(f"Checkpoint dir: {checkpoint_dir}")
 

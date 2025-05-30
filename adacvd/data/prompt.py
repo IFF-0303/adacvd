@@ -3,7 +3,7 @@ from typing import List
 
 import pandas as pd
 
-from pandora.data import ukb_data_utils, ukb_features
+from adacvd.data import ukb_data_utils, ukb_features
 
 
 def to_prompt(feature: pd.Series) -> pd.Series:

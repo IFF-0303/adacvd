@@ -12,8 +12,8 @@ import pandas as pd
 import wget
 from tqdm import tqdm
 
-import pandora.data.outcome_definition as outcome_definition
-import pandora.data.ukb_field_ids as ukb_field_ids
+import adacvd.data.outcome_definition as outcome_definition
+import adacvd.data.ukb_field_ids as ukb_field_ids
 
 # PATHS
 ASSETS_PATH = Path(os.environ.get("ASSETS_PATH", "assets"))

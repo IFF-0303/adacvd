@@ -1,7 +1,7 @@
 import yaml
 
 from exploration.evaluation import evaluation_utils
-from pandora.data.ukb_data_utils import ASSETS_PATH
+from adacvd.data.ukb_data_utils import ASSETS_PATH
 
 medical_risk_scores = evaluation_utils.load_medical_risk_scores()
 medical_risk_scores.isna().sum(axis=0) / len(medical_risk_scores)

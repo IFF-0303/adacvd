@@ -13,10 +13,10 @@ from accelerate import Accelerator
 from torch.utils.data import DataLoader
 from transformers import AutoTokenizer, DataCollatorForTokenClassification
 
-from pandora.data import ukb_features, ukb_field_ids
-from pandora.data.prompt import join_prompt_parts
-from pandora.data.ukb_data_utils import ASSETS_PATH
-from pandora.data.ukb_features import sort_features_by_feature_group
+from adacvd.data import ukb_features, ukb_field_ids
+from adacvd.data.prompt import join_prompt_parts
+from adacvd.data.ukb_data_utils import ASSETS_PATH
+from adacvd.data.ukb_features import sort_features_by_feature_group
 
 
 class PromptDataset(torch.utils.data.Dataset):

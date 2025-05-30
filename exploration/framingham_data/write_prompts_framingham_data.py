@@ -5,13 +5,13 @@ import yaml
 from IPython.display import display
 
 from exploration.frederike.visualization.visualization_utils import setup_plotting
-from pandora.data import ukb_data_utils, ukb_features, ukb_field_ids
-from pandora.risk_scores import (
+from adacvd.data import ukb_data_utils, ukb_features, ukb_field_ids
+from adacvd.risk_scores import (
     framingham_risk_score,
     pooled_cohort_risk_score,
     prevent_risk_score,
 )
-from pandora.utils.metrics import (
+from adacvd.utils.metrics import (
     compute_binary_classification_metrics,
     compute_bootstrapped_metrics,
     compute_roc_curve_values,
@@ -76,23 +76,6 @@ prompt_parts["HDLC_2"] = (
 )
 tab_df["HDLC_2"] = baseline_assessment["HDLC"] / CHOLESTEROL_MMOLL_TO_MGDL_FACTOR
 
-# HDLC: for Period != 3, simple mean imputation from paper
-# prompt_parts["HDLC"] = (
-#     "HDL cholesterol: "
-#     + baseline_assessment["SEX"].map({1: 44.9, 2: 57.6}).astype(str)
-#     + " mg/dL"
-# )
-# prompt_parts["HDLC_2"] = (
-#     "HDL cholesterol: "
-#     + round(
-#         baseline_assessment["SEX"].map({1: 44.9, 2: 57.6})
-#         / CHOLESTEROL_MMOLL_TO_MGDL_FACTOR,
-#         1,
-#     ).astype(str)
-#     + " mmol/L"
-# )
-
-
 prompt_parts["SYSBP"] = (
     "Systolic blood pressure: " + baseline_assessment["SYSBP"].astype(str) + " mmHg"
 )
@@ -127,7 +110,7 @@ target_options = {
     "CVD": {
         "target_variable": "CVD",
         "time_target_variable": "TIMECVD",
-        "prevalence_variable": "PREV_STRK_MI",  # TODO: why not PREVCVD or PREVCVD_AP?
+        "prevalence_variable": "PREV_STRK_MI",
     },
     "ANYCHD": {
         "target_variable": "ANYCHD",

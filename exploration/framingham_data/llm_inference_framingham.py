@@ -11,42 +11,21 @@ from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 from transformers import DataCollatorForTokenClassification
 
-from pandora.data.ukb_data_utils import ASSETS_PATH
-from pandora.training.dataset import FraminghamPromptDataset
-from pandora.training.model import HuggingfaceModel, evaluate_step
-from pandora.training.utils import RuntimeLimits, get_latest_checkpoint_dir
-
-
-def replace_values_from_dict(a, b):
-    new_dict = {}
-    for key, value in a.items():
-        if key in b:
-            if isinstance(value, dict) and isinstance(b[key], dict):
-                # If both values are dicts, recurse
-                new_dict[key] = replace_values_from_dict(value, b[key])
-            else:
-                # Replace value from `b`
-                new_dict[key] = b[key]
-        else:
-            # Keep original value
-            new_dict[key] = (
-                replace_values_from_dict(value, b) if isinstance(value, dict) else value
-            )
-
-    return new_dict
-
+from adacvd.data.ukb_data_utils import ASSETS_PATH
+from adacvd.training.dataset import FraminghamPromptDataset
+from adacvd.training.model import HuggingfaceModel, evaluate_step
+from adacvd.training.utils import RuntimeLimits, get_latest_checkpoint_dir
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--inference_dir",
         help="Path to inference directory. Should contain a 'inference_settings.yaml' file. Inference outcomes will be stored here.",
-        default="exploration/frederike/framingham_data",
     )
     parser.add_argument(
         "--device",
         help="Device to run inference on (e.g cpu, cuda or mps)",
-        default="mps",
+        default="cpu",
     )
     parser.add_argument(
         "--num_samples",

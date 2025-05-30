@@ -18,7 +18,7 @@ from torch.utils.data import DataLoader
 from transformers import DataCollatorForTokenClassification
 
 from exploration.evaluation.evaluation_utils import find_highest_epoch_step
-from pandora.data import prompt, ukb_features
+from adacvd.data import prompt, ukb_features
 
 # Default configuration dictionaries for finetuning approaches
 FINETUNING_DEFAULT_DICT = {

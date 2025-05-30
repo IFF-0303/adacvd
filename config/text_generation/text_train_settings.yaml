@@ -14,7 +14,7 @@ data:
       - additional_risk_score_inputs_aha_acc
       - additional_risk_score_inputs_prevent
   oversampled_pos_fraction: 0.0
-  path: /fast/groups/hfm-users/pandora-med-box/results/2025_02_26_text_dataset_full_mistral_20k/text_generation_output.csv
+  path: .../text_generation_output.csv # replace with the path to the generated texts
   shuffle: false
   split: config/splits/split_2025_02_17_test_100000.json
   subset: subsets/ukb_2024_02/MACE_ADO_EXTENDED_no_previous_target.json
@@ -31,7 +31,6 @@ model:
       - k_proj
       - v_proj
     type: lora
-  model_checkpoint: /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/015/checkpoint_2_n450000
   name: mistralai/Mistral-7B-Instruct-v0.3
   precision: 16b
   resume_training: true

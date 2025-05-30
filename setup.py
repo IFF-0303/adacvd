@@ -3,8 +3,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="Pandora",
-    version="0.0",
+    name="adacvd",
+    version="0.0.1",
     description="Code for the development of AdaCVD",
     author="Frederike Lübeck",
     url="",

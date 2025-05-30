@@ -2,8 +2,8 @@ import time
 
 import pandas as pd
 
-from pandora.data import ukb_data_utils, ukb_features, ukb_field_ids
-from pandora.risk_scores import (
+from adacvd.data import ukb_data_utils, ukb_features, ukb_field_ids
+from adacvd.risk_scores import (
     QRISK,
     SCORE,
     framingham_risk_score,

@@ -1,4 +1,4 @@
-base_model_dir: /fast/groups/hfm-users/pandora-med-box/results/2025_02_19_mistral_fgs_saved/001/
+base_model_dir: ... # replace with the path to the model checkpoint
 data:
   eval_subset: true
   feature_config:

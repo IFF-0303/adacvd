@@ -2,7 +2,7 @@ import math
 from dataclasses import dataclass
 from typing import Literal
 
-from pandora.data.ukb_data_utils import isNaN
+from adacvd.data.ukb_data_utils import isNaN
 
 
 # COEFFICIENTS

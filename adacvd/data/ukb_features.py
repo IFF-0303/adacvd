@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from pandora.data import ukb_data_utils, ukb_field_ids
+from adacvd.data import ukb_data_utils, ukb_field_ids
 
 
 def previous_MACE(

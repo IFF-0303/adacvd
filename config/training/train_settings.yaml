@@ -40,7 +40,6 @@ data:
 model:
   type: huggingface
   name: "mistralai/Mistral-7B-Instruct-v0.3"
-  # model_checkpoint: "/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/018/checkpoint_2_n419520"
   precision: "16b"
   autocast_adapter_dtype: false
   resume_training: true

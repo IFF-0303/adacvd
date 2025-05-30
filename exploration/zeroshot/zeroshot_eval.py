@@ -23,12 +23,12 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from transformers import DataCollatorForTokenClassification
 
-import pandora.utils.logger
-from pandora.data.ukb_data_utils import WANDB_ENTITY
-from pandora.training.dataset import PromptDataset, load_prompt_parts
-from pandora.training.model import HuggingfaceModel
-from pandora.training.utils import RuntimeLimits, get_latest_checkpoint_dir
-from pandora.utils.metrics import compute_binary_classification_metrics
+import adacvd.utils.logger
+from adacvd.data.ukb_data_utils import WANDB_ENTITY
+from adacvd.training.dataset import PromptDataset, load_prompt_parts
+from adacvd.training.model import HuggingfaceModel
+from adacvd.training.utils import RuntimeLimits, get_latest_checkpoint_dir
+from adacvd.utils.metrics import compute_binary_classification_metrics
 
 
 def parse_args():

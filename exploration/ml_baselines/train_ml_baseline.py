@@ -27,16 +27,16 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from tqdm import tqdm
 
-import pandora.utils.logger
-from pandora.data import ukb_features, ukb_field_ids
-from pandora.data.ukb_data_utils import ASSETS_PATH, WANDB_ENTITY, load_ukb_meta_files
-from pandora.training.dataset import (
+import adacvd.utils.logger
+from adacvd.data import ukb_features, ukb_field_ids
+from adacvd.data.ukb_data_utils import ASSETS_PATH, WANDB_ENTITY, load_ukb_meta_files
+from adacvd.training.dataset import (
     get_column_names,
     load_prompt_parts,
     load_split,
     sample_columns,
 )
-from pandora.utils.metrics import compute_binary_classification_metrics
+from adacvd.utils.metrics import compute_binary_classification_metrics
 
 
 def parse_args():
@@ -558,32 +558,19 @@ def run_model(
 
 
 def getDuplicateColumns(df):
-
-    # Create an empty set
     duplicateColumnNames = set()
-
-    # Iterate through all the columns of dataframe
     for x in range(df.shape[1]):
-
-        # Take column at xth index.
         col = df.iloc[:, x]
-
-        # Iterate through all the columns
         for y in range(x + 1, df.shape[1]):
-
-            # Take column at yth index.
             otherCol = df.iloc[:, y]
-
-            # Check if two columns at x & y
             if col.equals(otherCol):
                 duplicateColumnNames.add(df.columns.values[y])
-
     return list(duplicateColumnNames)
 
 
 if __name__ == "__main__":
     args = parse_args()
-    with open(args.config, "r") as f:  # TODO: use config from train_dir if provided?
+    with open(args.config, "r") as f:
         config = yaml.safe_load(f)
 
     config["train_dir"] = args.train_dir
@@ -597,7 +584,7 @@ if __name__ == "__main__":
         with open(os.path.join(args.train_dir, "config.yaml"), "w") as outfile:
             yaml.dump(config, outfile, default_flow_style=False)
 
-    # TODO: preprocess data, then run model
+    # preprocess data, then run model
     (
         df_train,
         df_test,

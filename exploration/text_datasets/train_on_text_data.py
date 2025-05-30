@@ -12,30 +12,10 @@ from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 from transformers import DataCollatorForTokenClassification
 
-from pandora.data.ukb_data_utils import ASSETS_PATH
-from pandora.training.dataset import TextDataset, load_split
-from pandora.training.model import HuggingfaceModel, evaluate_step
-from pandora.training.utils import RuntimeLimits, get_latest_checkpoint_dir
-
-
-def replace_values_from_dict(a, b):
-    new_dict = {}
-    for key, value in a.items():
-        if key in b:
-            if isinstance(value, dict) and isinstance(b[key], dict):
-                # If both values are dicts, recurse
-                new_dict[key] = replace_values_from_dict(value, b[key])
-            else:
-                # Replace value from `b`
-                new_dict[key] = b[key]
-        else:
-            # Keep original value
-            new_dict[key] = (
-                replace_values_from_dict(value, b) if isinstance(value, dict) else value
-            )
-
-    return new_dict
-
+from adacvd.data.ukb_data_utils import ASSETS_PATH
+from adacvd.training.dataset import TextDataset, load_split
+from adacvd.training.model import HuggingfaceModel, evaluate_step
+from adacvd.training.utils import RuntimeLimits, get_latest_checkpoint_dir
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -77,13 +57,14 @@ def main():
     )
 
     # filter eos if specified
+    # this is used to filter out cropped samples that do not end with the end-of-sequence token
     filter_eos = train_config["data"].get("filter_eos", False)
     if filter_eos:
         logging.info(f"Dataset size: {len(dataset)}")
         dataset = dataset.filter(lambda x: x["ends_with_eos"])
         logging.info(f"Dataset size after filtering: {len(dataset)}")
 
-    # TODO: rename text_summary to prompt and remove the prompt field
+    # rename text_summary to prompt and remove the prompt field
     dataset = dataset.remove_columns(["prompt"])
     dataset = dataset.rename_column("text_summary", "prompt")
 
@@ -141,7 +122,7 @@ def main():
     validation_eids = list(set(eids) & set(split["validation"]))
 
     if train_config["data"].get("num_training_samples") is not None:
-        # training is done on test data
+        # training is done on test data (not seen during pre-training)
         set_seed(train_config["training"].get("random_seed", 0))
         test_eids = random.sample(
             test_eids,

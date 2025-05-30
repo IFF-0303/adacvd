@@ -5,7 +5,7 @@ from typing import Union
 import numpy as np
 import pandas as pd
 
-from pandora.data import ukb_data_utils
+from adacvd.data import ukb_data_utils
 
 
 def split_data(

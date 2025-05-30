@@ -7,8 +7,8 @@ import yaml
 from datasets import Dataset, load_dataset
 from IPython.display import display
 
-from pandora.data import ukb_data_utils, ukb_features, ukb_field_ids
-from pandora.utils import metrics
+from adacvd.data import ukb_data_utils, ukb_features, ukb_field_ids
+from adacvd.utils import metrics
 
 # load raw csv file and meta data
 df_ = pd.read_csv(

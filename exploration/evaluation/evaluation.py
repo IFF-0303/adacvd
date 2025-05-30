@@ -9,13 +9,13 @@ import yaml
 from sklearn.utils import resample
 from tqdm import tqdm
 
-import pandora.utils.logger
+import adacvd.utils.logger
 from exploration.evaluation.evaluation_utils import (
     find_highest_epoch_step,
     load_medical_risk_scores,
 )
-from pandora.data.ukb_data_utils import ASSETS_PATH, RESULTS_PATH
-from pandora.utils.metrics import compute_bootstrapped_metrics, compute_roc_curve_values
+from adacvd.data.ukb_data_utils import ASSETS_PATH, RESULTS_PATH
+from adacvd.utils.metrics import compute_bootstrapped_metrics, compute_roc_curve_values
 
 
 def parse_args():
@@ -44,7 +44,6 @@ def parse_args():
     parser.add_argument(
         "--evaluation_subset",
         help="Path to the evaluation subset.",
-        default="/fast/groups/hfm-users/pandora-med-box/assets/evaluation_subsets/ukb_2024_02/test_subset_MACE_ADO_EXTENDED_no_previous_target.json",
     )
     parser.add_argument(
         "--target",

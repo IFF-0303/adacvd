@@ -10,7 +10,7 @@ model:
       - k_proj
       - v_proj
     type: lora
-  model_checkpoint: /fast/groups/hfm-users/pandora-med-box/results/2025_03_03_mistral_fgs/000/checkpoint_2_n711040
+  model_checkpoint: ... # replace with the path to the model checkpoint
   name: mistralai/Mistral-7B-Instruct-v0.3
   precision: 16b
   resume_training: true

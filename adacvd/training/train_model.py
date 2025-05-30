@@ -12,10 +12,10 @@ from accelerate.utils import set_seed
 from torch.utils.data import DataLoader
 from transformers import DataCollatorForTokenClassification
 
-import pandora.utils.logger
-from pandora.training.dataset import PromptDataset, load_prompt_parts
-from pandora.training.model import HuggingfaceModel
-from pandora.training.utils import RuntimeLimits, get_latest_checkpoint_dir
+import adacvd.utils.logger
+from adacvd.training.dataset import PromptDataset, load_prompt_parts
+from adacvd.training.model import HuggingfaceModel
+from adacvd.training.utils import RuntimeLimits, get_latest_checkpoint_dir
 
 RUNTIME_LIMITS = {
     "max_time_per_run": 360000,

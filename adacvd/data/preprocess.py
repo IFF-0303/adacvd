@@ -7,7 +7,7 @@ import pandas as pd
 import yaml
 from tqdm import tqdm
 
-from pandora.data import prompt, ukb_data_utils, ukb_features
+from adacvd.data import prompt, ukb_data_utils, ukb_features
 
 logging.basicConfig(format="%(asctime)s – %(levelname)s: %(message)s")
 logging.getLogger().setLevel(logging.INFO)

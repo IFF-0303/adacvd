@@ -4,7 +4,7 @@ import re
 
 import pandas as pd
 
-from pandora.data import ukb_data_utils
+from adacvd.data import ukb_data_utils
 
 
 def find_highest_epoch_step(

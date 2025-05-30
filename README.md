@@ -44,7 +44,7 @@ pip install -e .
 
 ## Data
 
-This project uses data from the UK Biobank.For a detailed description of data preprocessing, see [`docuentation/ukb_data_preparation.md`](documentation/ukb_data_preparation.md).
+This project uses data from the UK Biobank.For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md).
 
 ## Model Training & Inference
 
@@ -53,7 +53,7 @@ This project uses data from the UK Biobank.For a detailed description of data pr
 To start training the model, use the following command:
 
 ```bash
-accelerate launch pandora/training/train_model.py --train_dir={base_dir} --device=cuda
+accelerate launch adacvd/training/train_model.py --train_dir={base_dir} --device=cuda
 ```
 
 Replace `{base_dir}` with the path to your training directory containing the configuration file (such as [`config/training/train_settings.yaml`](config/training/train_settings.yaml)). All model checkpoints and predictions will be stored in this file.
@@ -77,6 +77,10 @@ Adjust the model or config file depending on which model you want to run.
 ## Evaluation
 
 ToDo.
+
+```bash
+exploration/frederike/evaluation/draft_evaluation.py --prediction_dir={prediction_dir} --eval_dir={eval_dir} --evaluation_subset={Path(evaluation_subset)} --target={target}"
+```
 
 ##
 

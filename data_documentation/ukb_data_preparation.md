@@ -14,7 +14,7 @@ The raw UKB dataset is stored in `assets/ukb/...` and consists of the following 
 
 ## Processing
 
-The preprocessing of the UKB dataset is handled by the [`pandora/data/preprocess.py`](../pandora/data/preprocess.py) script. This script performs the following steps:
+The preprocessing of the UKB dataset is handled by the [`adacvd/data/preprocess.py`](../adacvd/data/preprocess.py) script. This script performs the following steps:
 
 1. **Feature Extraction**: Extracts meaningful features from the raw UKB dataset based on field IDs and custom feature definitions.
 2. **Target Generation**: Creates target variables based on the definition of the outcome.

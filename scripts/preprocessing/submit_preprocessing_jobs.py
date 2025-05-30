@@ -49,7 +49,7 @@ if __name__ == "__main__":
     num_samples = args.num_samples
     config_dir = os.path.dirname(config_file)
 
-    condor_arguments = f"pandora/data/preprocess.py --config_path={config_file}"
+    condor_arguments = f"adacvd/data/preprocess.py --config_path={config_file}"
     if num_samples is not None:
         condor_arguments += f" --num_samples={num_samples}"
 
