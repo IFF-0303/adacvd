@@ -2,9 +2,8 @@ channels:
   - nvidia
   - pytorch
   - conda-forge
-# channel_priority: strict
 dependencies:
-  - python=3.10.11
+  - python=3.10
   - pytorch
   - torchvision
   - torchaudio
@@ -28,7 +27,7 @@ dependencies:
   - openpyxl
   - orjson
   - wandb
-  - accelerate>=0.34 # TODO
+  - accelerate>=0.34
   - pytest
   - pre-commit
   - black
@@ -45,4 +44,3 @@ dependencies:
   - h5py
   - pip:
       - wget
-      # - bitsandbytes
