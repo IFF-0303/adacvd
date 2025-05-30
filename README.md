@@ -72,6 +72,8 @@ python exploration/ml_baselines/train_ml_baseline.py --model lgbm --config confi
 
 Adjust the model or config file depending on which model you want to train.
 
+The medical risk scores are implemented in [`adacvd/risk_scores`](adacvd/risk_scores).
+
 ## Evaluation
 
 To compute the evaluation metrics for a prediciton file, run the following command:
