@@ -1,0 +1,53 @@
+condor:
+  request_cpus: 8
+  request_memory: 300000
+  memory_gpus: 51000
+  request_gpus: 2
+  bid: 36
+data:
+  # num_training_samples: 20000
+  oversampled_pos_fraction: 0.0
+  path: "prompt_parts/ukb_2024_02/prompt_parts.parquet"
+  split: "config/splits/split_2025_02_17_test_100000.json"
+  subset: "subsets/ukb_2024_02/MACE_ADO_EXTENDED_no_previous_target.json"
+  eval_subset: True
+  shuffle: False
+  target_name: "MACE_ADO_EXTENDED_10y"
+  zeroshot_prompt: False
+  text_generation_prompt: True
+  feature_config:
+    feature_groups:
+      - base_risk_score_inputs
+      - additional_risk_score_inputs_aha_acc
+      - additional_risk_score_inputs_prevent
+      - polygenic_risk_scores_all
+      - medical_history_all
+      - icd_codes
+      - family_history
+      - lifestyle_and_environment
+      - physical_measures
+      - sociodemographics
+model:
+  type: huggingface
+  name: "mistralai/Mistral-7B-Instruct-v0.3"
+  precision: "16b"
+  autocast_adapter_dtype: false
+  resume_training: false
+  max_new_tokens: 400
+training:
+  batch_size: 32
+  num_workers: 4
+  eval_steps: 500
+  checkpoint_steps: 400000
+  save_model: false
+  optimizer:
+    type: adamw
+    lr: 0.00003
+  scheduler:
+    type: step
+    step_size: 50000
+    gamma: 0.5
+  extended_evaluation: true
+  random_seed: 0
+  full_eval_step_n: 400000
+  mask_labels: true

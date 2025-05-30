@@ -1,0 +1,16 @@
+base_model_dir: /fast/groups/hfm-users/pandora-med-box/results/2025_02_19_mistral_fgs_saved/001/
+data:
+  eval_subset: true
+  feature_config:
+    feature_groups:
+      - base_risk_score_inputs
+      - additional_risk_score_inputs_aha_acc
+      - additional_risk_score_inputs_prevent_except_bmi
+  path: prompt_parts/ukb_2024_02/prompt_parts.parquet
+  shuffle: false
+  split: config/splits/split_2025_02_17_test_100000.json
+  subset: subsets/ukb_2024_02/MACE_ADO_EXTENDED_no_previous_target.json
+  target_name: MACE_ADO_EXTENDED_10y
+  zeroshot_prompt: false
+inference:
+  eval_batch_size: 128

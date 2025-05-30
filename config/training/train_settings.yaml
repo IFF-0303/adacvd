@@ -1,0 +1,70 @@
+condor:
+  request_cpus: 8
+  request_memory: 300000
+  memory_gpus: 51000
+  request_gpus: 4
+  bid: 36
+data:
+  # num_training_samples: 10000
+  oversampled_pos_fraction: 0.0
+  path: "prompt_parts/ukb_2024_02/prompt_parts.parquet"
+  split: "config/splits/split_2025_02_17_test_100000.json"
+  subset: "subsets/ukb_2024_02/MACE_ADO_EXTENDED_no_previous_target.json"
+  eval_subset: True
+  shuffle: False
+  target_name: "MACE_ADO_EXTENDED_10y"
+  zeroshot_prompt: False
+  # sampling:
+  #   prob_additional_base_inputs: 1.0
+  #   prob_by_feature_group: 1.0
+  #   prob_keep_base_inputs: 1.0
+  #   prob_no_additional_feature_groups: 0.05
+  #   sampling_share_max: 1.0
+  #   sampling_share_min: 0.1
+  #   sampling_share_within_group_max: 1.0
+  #   sampling_share_within_group_min: 0.5
+  feature_config:
+    feature_groups:
+      - base_risk_score_inputs
+      - additional_risk_score_inputs_aha_acc
+      - additional_risk_score_inputs_prevent
+      - polygenic_risk_scores_all
+      - medical_history_all
+      - blood_samples
+      - icd_codes
+      - family_history
+      - lifestyle_and_environment
+      - physical_measures
+      - sociodemographics
+      - urine_assays
+model:
+  type: huggingface
+  name: "mistralai/Mistral-7B-Instruct-v0.3"
+  # model_checkpoint: "/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/018/checkpoint_2_n419520"
+  precision: "16b"
+  autocast_adapter_dtype: false
+  resume_training: true
+  finetuning:
+    type: lora
+    r: 16
+    target_modules: ["q_proj", "k_proj", "v_proj"]
+    lora_dropout: 0.01
+training:
+  epochs: 3
+  batch_size: 8
+  eval_batch_size: 2
+  num_workers: 4
+  eval_steps: 4000
+  checkpoint_steps: 400000
+  save_model: true
+  optimizer:
+    type: adamw
+    lr: 0.00001
+  scheduler:
+    type: step
+    step_size: 25000
+    gamma: 0.5
+  extended_evaluation: false
+  random_seed: 0
+  full_eval_step_n: 150000
+  mask_labels: true

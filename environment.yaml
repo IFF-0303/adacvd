@@ -1,0 +1,48 @@
+channels:
+  - nvidia
+  - pytorch
+  - conda-forge
+# channel_priority: strict
+dependencies:
+  - python=3.10.11
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+  - pandas
+  - numpy
+  - setuptools
+  - yaml
+  - pyyaml
+  - transformers
+  - peft
+  - scikit-learn
+  - datasets
+  - evaluate
+  - tqdm
+  - dask
+  - addict
+  - matplotlib
+  - seaborn
+  - lightgbm
+  - openpyxl
+  - orjson
+  - wandb
+  - accelerate>=0.34 # TODO
+  - pytest
+  - pre-commit
+  - black
+  - isort
+  - jupyter
+  - jupytext
+  - jupyterlab
+  - sentencepiece
+  - scikit-survival
+  - lifelines
+  - openai
+  - bitsandbytes
+  - umap-learn
+  - h5py
+  - pip:
+      - wget
+      # - bitsandbytes

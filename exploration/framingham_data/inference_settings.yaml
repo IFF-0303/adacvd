@@ -1,0 +1,36 @@
+data:
+  path: "framingham/prompt_parts_mmoll_ANYCHD.parquet"
+model:
+  autocast_adapter_dtype: false
+  finetuning:
+    lora_dropout: 0.01
+    r: 32
+    target_modules:
+      - q_proj
+      - k_proj
+      - v_proj
+    type: lora
+  model_checkpoint: /fast/groups/hfm-users/pandora-med-box/results/2025_03_03_mistral_fgs/000/checkpoint_2_n711040
+  name: mistralai/Mistral-7B-Instruct-v0.3
+  precision: 16b
+  resume_training: true
+  type: huggingface
+training:
+  batch_size: 64
+  eval_steps: 1
+  epochs: 10
+  optimizer:
+    lr: 0.00001
+    type: adamw
+  scheduler:
+    step_size: 10
+    gamma: 0.5
+    type: step
+  random_seed: 0
+  checkpoint_steps: 400000
+  eval_batch_size: 16
+  extended_evaluation: false
+  full_eval_step_n: 1000000
+  mask_labels: true
+  num_workers: 4
+  save_model: false

@@ -1,0 +1,23 @@
+data:
+  feature_config:
+    feature_groups:
+      - [
+          base_risk_score_inputs,
+          additional_risk_score_inputs_aha_acc,
+          additional_risk_score_inputs_prevent,
+        ]
+      - [
+          base_risk_score_inputs,
+          additional_risk_score_inputs_aha_acc,
+          additional_risk_score_inputs_prevent,
+          polygenic_risk_scores_all,
+          medical_history_all,
+          blood_samples,
+          icd_codes,
+          family_history,
+          lifestyle_and_environment,
+          physical_measures,
+          sociodemographics,
+          urine_assays,
+        ]
+      - [selected_features_top_100]

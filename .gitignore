@@ -1,0 +1,21 @@
+# Ignore macOS DS_Store files
+.DS_Store
+
+# custom
+config/splits
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# pip cache
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
