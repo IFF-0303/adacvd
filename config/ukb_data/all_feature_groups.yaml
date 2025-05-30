@@ -265,10 +265,8 @@ data:
     - BP_medication
     - ICD_10
     - Diabetes_medication
-    - prevent_risk_score
     - Cholesterol_medication
     - ICD_9
-    - framingham_risk_score
     - eGFR
   follow_up_years: 10
   target: MACE_ADO
