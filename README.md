@@ -80,11 +80,16 @@ The medical risk scores are implemented in [`adacvd/risk_scores`](adacvd/risk_sc
 
 ## Evaluation
 
-To compute the evaluation metrics for a prediciton file, run the following command:
+To compute the bootstrapped evaluation metrics for a prediciton file, run the following command:
 
 ```bash
-exploration/evaluation/evaluation.py --prediction_dir={prediction_dir} --eval_dir={eval_dir} --evaluation_subset={evaluation_subset} --target={target}"
+exploration/evaluation/evaluation.py --prediction_dir={prediction_dir} --eval_dir={eval_dir} --evaluation_subset={evaluation_subset} --target MACE_ADO_EXTENDED_10y"
 ```
+
+- `prediction_dir`: Path to the directory containing the models' predictions for the evaluation set (`evals.csv`)
+- `eval_dir`: Path to a directory where the evaluation results will be stored.
+- `evaluation_subset`: Path to the evaluation subset, which contains the eids of all participants that should be included in the evaluation.
+- `target`: Outcome variable that should be used for the evaluation.
 
 ## Citation
 In case you found our work useful, please consider citing us:
