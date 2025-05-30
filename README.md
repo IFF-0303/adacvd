@@ -16,7 +16,7 @@ micromamba activate adacvd
 ### 2. Install PyTorch with CUDA Support
 
 ```bash
-micromamba install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
+micromamba install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 > Adjust `pytorch-cuda=12.1` if your system uses a different CUDA version.
 
