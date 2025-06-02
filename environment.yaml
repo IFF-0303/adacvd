@@ -4,7 +4,7 @@ channels:
   - pytorch
   - conda-forge
   - nodefaults
-channel_priority: strict
+# channel_priority: strict
 dependencies:
   - python=3.10
   - pytorch
@@ -40,6 +40,6 @@ dependencies:
   - sentencepiece
   - lifelines
   - h5py
-  - pip:
-      - bitsandbytes
-      - scikit-survival
+  - pip
+  #     - bitsandbytes
+  #     - scikit-survival
