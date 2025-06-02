@@ -1,8 +1,8 @@
 --- Example log of model training ---
 
-2025-03-06 21:33:28,875 – INFO: args: {'train_dir': '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001', 'device': 'cuda', 'num_samples': None}
+2025-03-06 21:33:28,875 – INFO: args: {'train_dir': 'results/2025_03_06_mistral_fgs/001', 'device': 'cuda', 'num_samples': None}
 2025-03-06 21:33:28,875 – INFO: Node: g179
-2025-03-06 21:33:28,876 – INFO: args: {'train_dir': '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001', 'device': 'cuda', 'num_samples': None}
+2025-03-06 21:33:28,876 – INFO: args: {'train_dir': 'results/2025_03_06_mistral_fgs/001', 'device': 'cuda', 'num_samples': None}
 2025-03-06 21:33:28,876 – INFO: Node: g179
 2025-03-06 21:33:29,548 – INFO: GPU: NVIDIA A100-SXM4-80GB
 2025-03-06 21:33:29,548 – INFO: GPU: NVIDIA A100-SXM4-80GB
@@ -58,17 +58,17 @@ Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00
 We detected that you are passing `past_key_values` as a tuple and this is deprecated and will be removed in v4.43. Please use an appropriate `Cache` class (https://huggingface.co/docs/transformers/v4.41.3/en/internal/generation_utils#transformers.Cache)
 
 100%|██████████| 1165/1165 [03:17<00:00,  5.90it/s]
-2025-03-06 21:37:18,759 – INFO: New best roc_auc: 0.619313715533944, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
-2025-03-06 21:37:18,761 – INFO: New best roc_auc: 0.619313715533944, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
-2025-03-06 21:37:18,780 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
-2025-03-06 21:37:46,264 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/model.safetensors
-2025-03-06 21:37:46,272 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/optimizer.bin
-2025-03-06 21:37:46,275 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/scheduler.bin
-2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler.bin
-2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler_1.bin
-2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler_2.bin
-2025-03-06 21:37:46,281 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/random_states_0.pkl
-2025-03-06 21:37:46,788 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n0'
+2025-03-06 21:37:18,759 – INFO: New best roc_auc: 0.619313715533944, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
+2025-03-06 21:37:18,761 – INFO: New best roc_auc: 0.619313715533944, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
+2025-03-06 21:37:18,780 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_1_n0
+2025-03-06 21:37:46,264 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/model.safetensors
+2025-03-06 21:37:46,272 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/optimizer.bin
+2025-03-06 21:37:46,275 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/scheduler.bin
+2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler.bin
+2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler_1.bin
+2025-03-06 21:37:46,276 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/sampler_2.bin
+2025-03-06 21:37:46,281 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n0/random_states_0.pkl
+2025-03-06 21:37:46,788 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_1_n0'
  18%|█▊        | 4000/22220 [26:23<1:41:03,  3.01it/s]2025-03-06 22:00:21,403 – INFO: Evaluate model at step 4000 in epoch 1. Number of training points so far: 64000.
 2025-03-06 22:00:21,404 – INFO: Evaluate model at step 4000 in epoch 1. Number of training points so far: 64000.
 2025-03-06 22:00:22,717 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -81,17 +81,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 /lustre/home/fluebeck/micromamba/envs/pandora-med-box/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
-2025-03-06 22:03:40,517 – INFO: New best roc_auc: 0.7353035362616662, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
-2025-03-06 22:03:40,526 – INFO: New best roc_auc: 0.7353035362616662, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
-2025-03-06 22:03:40,545 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
-2025-03-06 22:04:07,522 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/model.safetensors
-2025-03-06 22:04:07,623 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/optimizer.bin
-2025-03-06 22:04:07,627 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/scheduler.bin
-2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler.bin
-2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler_1.bin
-2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler_2.bin
-2025-03-06 22:04:07,630 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/random_states_0.pkl
-2025-03-06 22:04:08,066 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000'
+2025-03-06 22:03:40,517 – INFO: New best roc_auc: 0.7353035362616662, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
+2025-03-06 22:03:40,526 – INFO: New best roc_auc: 0.7353035362616662, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
+2025-03-06 22:03:40,545 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000
+2025-03-06 22:04:07,522 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/model.safetensors
+2025-03-06 22:04:07,623 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/optimizer.bin
+2025-03-06 22:04:07,627 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/scheduler.bin
+2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler.bin
+2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler_1.bin
+2025-03-06 22:04:07,627 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/sampler_2.bin
+2025-03-06 22:04:07,630 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000/random_states_0.pkl
+2025-03-06 22:04:08,066 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_1_n64000'
  36%|███▌      | 8000/22220 [52:41<1:21:44,  2.90it/s]2025-03-06 22:26:39,781 – INFO: Evaluate model at step 8000 in epoch 1. Number of training points so far: 128000.
 2025-03-06 22:26:39,782 – INFO: Evaluate model at step 8000 in epoch 1. Number of training points so far: 128000.
 2025-03-06 22:26:41,098 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -104,17 +104,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 /lustre/home/fluebeck/micromamba/envs/pandora-med-box/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
-2025-03-06 22:29:59,464 – INFO: New best roc_auc: 0.7377192416521803, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
-2025-03-06 22:29:59,471 – INFO: New best roc_auc: 0.7377192416521803, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
-2025-03-06 22:29:59,507 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
-2025-03-06 22:30:23,165 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/model.safetensors
-2025-03-06 22:30:23,258 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/optimizer.bin
-2025-03-06 22:30:23,262 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/scheduler.bin
-2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler.bin
-2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler_1.bin
-2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler_2.bin
-2025-03-06 22:30:23,266 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/random_states_0.pkl
-2025-03-06 22:30:23,739 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000'
+2025-03-06 22:29:59,464 – INFO: New best roc_auc: 0.7377192416521803, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
+2025-03-06 22:29:59,471 – INFO: New best roc_auc: 0.7377192416521803, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
+2025-03-06 22:29:59,507 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000
+2025-03-06 22:30:23,165 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/model.safetensors
+2025-03-06 22:30:23,258 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/optimizer.bin
+2025-03-06 22:30:23,262 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/scheduler.bin
+2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler.bin
+2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler_1.bin
+2025-03-06 22:30:23,262 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/sampler_2.bin
+2025-03-06 22:30:23,266 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000/random_states_0.pkl
+2025-03-06 22:30:23,739 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_1_n128000'
  42%|████▏     | 9374/22220 [1:04:10<1:11:40,  2.99it/s]2025-03-06 22:38:08,875 – INFO: Evaluate model in 1. Number of training points so far: 150000.
 2025-03-06 22:38:08,951 – INFO: Evaluate model in 1. Number of training points so far: 150000.
 2025-03-06 22:38:10,148 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -129,17 +129,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 2025-03-06 22:54:29,351 – INFO: {'accuracy': 0.9259080007313479, 'f1': 0.0, 'roc_auc': 0.7346027041380553, 'share_pos': 0.07409199926865206, 'share_pos_pred': 0.0, 's_acc': 0.9259080007313479, 's_balanced_acc': 0.5, 's_f1': 0.0, 's_roc_auc': 0.7346027041380553, 'precision_score': 0.0, 'recall_score': 0.0, 'eval_loss_avg': tensor(0.9815, dtype=torch.float64)}
 2025-03-06 22:54:29,360 – INFO: {'accuracy': 0.9259080007313479, 'f1': 0.0, 'roc_auc': 0.7346027041380553, 'share_pos': 0.07409199926865206, 'share_pos_pred': 0.0, 's_acc': 0.9259080007313479, 's_balanced_acc': 0.5, 's_f1': 0.0, 's_roc_auc': 0.7346027041380553, 'precision_score': 0.0, 'recall_score': 0.0, 'eval_loss_avg': tensor(0.9815, dtype=torch.float64)}
-2025-03-06 22:54:29,533 – INFO: New best roc_auc: 0.7346027041380553, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
-2025-03-06 22:54:29,548 – INFO: New best roc_auc: 0.7346027041380553, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
-2025-03-06 22:54:29,571 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
-2025-03-06 22:54:54,875 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/model.safetensors
-2025-03-06 22:54:54,970 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/optimizer.bin
-2025-03-06 22:54:54,973 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/scheduler.bin
-2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler.bin
-2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler_1.bin
-2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler_2.bin
-2025-03-06 22:54:54,977 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/random_states_0.pkl
-2025-03-06 22:54:55,437 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000'
+2025-03-06 22:54:29,533 – INFO: New best roc_auc: 0.7346027041380553, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
+2025-03-06 22:54:29,548 – INFO: New best roc_auc: 0.7346027041380553, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
+2025-03-06 22:54:29,571 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000
+2025-03-06 22:54:54,875 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/model.safetensors
+2025-03-06 22:54:54,970 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/optimizer.bin
+2025-03-06 22:54:54,973 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/scheduler.bin
+2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler.bin
+2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler_1.bin
+2025-03-06 22:54:54,974 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/sampler_2.bin
+2025-03-06 22:54:54,977 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000/random_states_0.pkl
+2025-03-06 22:54:55,437 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_1_n150000'
  54%|█████▍    | 12000/22220 [1:35:47<56:51,  3.00it/s]2025-03-06 23:09:45,881 – INFO: Evaluate model at step 12000 in epoch 1. Number of training points so far: 192000.
 2025-03-06 23:09:45,882 – INFO: Evaluate model at step 12000 in epoch 1. Number of training points so far: 192000.
 2025-03-06 23:09:47,163 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -177,18 +177,18 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
 /lustre/home/fluebeck/micromamba/envs/pandora-med-box/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 2025-03-07 00:11:01,961 – INFO: {'accuracy': 0.9259080007313479, 'f1': 0.0, 'roc_auc': 0.7361526405448116, 'share_pos': 0.07409199926865206, 'share_pos_pred': 0.0, 's_acc': 0.9259080007313479, 's_balanced_acc': 0.5, 's_f1': 0.0, 's_roc_auc': 0.7361526405448116, 'precision_score': 0.0, 'recall_score': 0.0, 'eval_loss_avg': tensor(1.0634, dtype=torch.float64)}
-2025-03-07 00:11:02,151 – INFO: New best roc_auc: 0.7361526405448116, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
+2025-03-07 00:11:02,151 – INFO: New best roc_auc: 0.7361526405448116, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
 2025-03-07 00:11:02,165 – INFO: {'accuracy': 0.9259080007313479, 'f1': 0.0, 'roc_auc': 0.7361526405448116, 'share_pos': 0.07409199926865206, 'share_pos_pred': 0.0, 's_acc': 0.9259080007313479, 's_balanced_acc': 0.5, 's_f1': 0.0, 's_roc_auc': 0.7361526405448116, 'precision_score': 0.0, 'recall_score': 0.0, 'eval_loss_avg': tensor(1.0634, dtype=torch.float64)}
-2025-03-07 00:11:02,355 – INFO: New best roc_auc: 0.7361526405448116, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
-2025-03-07 00:11:02,385 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
-2025-03-07 00:11:28,324 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/model.safetensors
-2025-03-07 00:11:28,431 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/optimizer.bin
-2025-03-07 00:11:28,435 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/scheduler.bin
-2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler.bin
-2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler_1.bin
-2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler_2.bin
-2025-03-07 00:11:28,438 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/random_states_0.pkl
-2025-03-07 00:11:28,881 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000'
+2025-03-07 00:11:02,355 – INFO: New best roc_auc: 0.7361526405448116, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
+2025-03-07 00:11:02,385 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000
+2025-03-07 00:11:28,324 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/model.safetensors
+2025-03-07 00:11:28,431 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/optimizer.bin
+2025-03-07 00:11:28,435 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/scheduler.bin
+2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler.bin
+2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler_1.bin
+2025-03-07 00:11:28,435 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/sampler_2.bin
+2025-03-07 00:11:28,438 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000/random_states_0.pkl
+2025-03-07 00:11:28,881 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_1_n300000'
  90%|█████████ | 20000/22220 [2:44:35<12:45,  2.90it/s]2025-03-07 00:18:34,169 – INFO: Evaluate model at step 20000 in epoch 1. Number of training points so far: 320000.
 2025-03-07 00:18:34,170 – INFO: Evaluate model at step 20000 in epoch 1. Number of training points so far: 320000.
 2025-03-07 00:18:35,459 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -231,17 +231,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 /lustre/home/fluebeck/micromamba/envs/pandora-med-box/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
-2025-03-07 01:03:42,501 – INFO: New best roc_auc: 0.7384230889471661, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
-2025-03-07 01:03:42,505 – INFO: New best roc_auc: 0.7384230889471661, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
-2025-03-07 01:03:42,531 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
-2025-03-07 01:04:07,848 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/model.safetensors
-2025-03-07 01:04:07,947 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/optimizer.bin
-2025-03-07 01:04:07,950 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/scheduler.bin
-2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler.bin
-2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler_1.bin
-2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler_2.bin
-2025-03-07 01:04:07,954 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/random_states_0.pkl
-2025-03-07 01:04:08,430 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520'
+2025-03-07 01:03:42,501 – INFO: New best roc_auc: 0.7384230889471661, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
+2025-03-07 01:03:42,505 – INFO: New best roc_auc: 0.7384230889471661, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
+2025-03-07 01:03:42,531 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520
+2025-03-07 01:04:07,848 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/model.safetensors
+2025-03-07 01:04:07,947 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/optimizer.bin
+2025-03-07 01:04:07,950 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/scheduler.bin
+2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler.bin
+2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler_1.bin
+2025-03-07 01:04:07,950 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/sampler_2.bin
+2025-03-07 01:04:07,954 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520/random_states_0.pkl
+2025-03-07 01:04:08,430 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n419520'
  27%|██▋       | 5904/22220 [40:25<1:32:18,  2.95it/s]2025-03-07 01:14:54,908 – INFO: Evaluate model in 2. Number of training points so far: 450000.
 2025-03-07 01:14:54,941 – INFO: Evaluate model in 2. Number of training points so far: 450000.
 2025-03-07 01:14:56,192 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -252,17 +252,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
 100%|██████████| 5812/5812 [16:16<00:00,  5.95it/s]
 2025-03-07 01:31:14,911 – INFO: {'accuracy': 0.9259295109648416, 'f1': 0.0008704482808646452, 'roc_auc': 0.7373360569282068, 'share_pos': 0.07409199926865206, 'share_pos_pred': 4.302046698716915e-05, 's_acc': 0.9259295109648416, 's_balanced_acc': 0.5002119305480947, 's_f1': 0.0008704482808646452, 's_roc_auc': 0.7373360569282068, 'precision_score': 0.75, 'recall_score': 0.00043547684714762664, 'eval_loss_avg': tensor(1.0746, dtype=torch.float64)}
 2025-03-07 01:31:14,912 – INFO: {'accuracy': 0.9259295109648416, 'f1': 0.0008704482808646452, 'roc_auc': 0.7373360569282068, 'share_pos': 0.07409199926865206, 'share_pos_pred': 4.302046698716915e-05, 's_acc': 0.9259295109648416, 's_balanced_acc': 0.5002119305480947, 's_f1': 0.0008704482808646452, 's_roc_auc': 0.7373360569282068, 'precision_score': 0.75, 'recall_score': 0.00043547684714762664, 'eval_loss_avg': tensor(1.0746, dtype=torch.float64)}
-2025-03-07 01:31:15,090 – INFO: New best roc_auc: 0.7373360569282068, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
-2025-03-07 01:31:15,094 – INFO: New best roc_auc: 0.7373360569282068, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
-2025-03-07 01:31:15,113 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
-2025-03-07 01:31:43,126 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/model.safetensors
-2025-03-07 01:31:43,225 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/optimizer.bin
-2025-03-07 01:31:43,229 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/scheduler.bin
-2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler.bin
-2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler_1.bin
-2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler_2.bin
-2025-03-07 01:31:43,233 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/random_states_0.pkl
-2025-03-07 01:31:43,667 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000'
+2025-03-07 01:31:15,090 – INFO: New best roc_auc: 0.7373360569282068, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
+2025-03-07 01:31:15,094 – INFO: New best roc_auc: 0.7373360569282068, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
+2025-03-07 01:31:15,113 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000
+2025-03-07 01:31:43,126 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/model.safetensors
+2025-03-07 01:31:43,225 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/optimizer.bin
+2025-03-07 01:31:43,229 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/scheduler.bin
+2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler.bin
+2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler_1.bin
+2025-03-07 01:31:43,229 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/sampler_2.bin
+2025-03-07 01:31:43,233 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000/random_states_0.pkl
+2025-03-07 01:31:43,667 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n450000'
  36%|███▌      | 8000/22220 [1:09:04<1:20:43,  2.94it/s]2025-03-07 01:43:33,345 – INFO: Evaluate model at step 8000 in epoch 2. Number of training points so far: 483520.
 2025-03-07 01:43:33,346 – INFO: Evaluate model at step 8000 in epoch 2. Number of training points so far: 483520.
 2025-03-07 01:43:34,628 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -275,17 +275,17 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
 /lustre/home/fluebeck/micromamba/envs/pandora-med-box/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1531: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
   _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
-2025-03-07 01:46:53,369 – INFO: New best roc_auc: 0.738868053771727, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
-2025-03-07 01:46:53,377 – INFO: New best roc_auc: 0.738868053771727, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
-2025-03-07 01:46:53,417 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
-2025-03-07 01:47:19,180 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/model.safetensors
-2025-03-07 01:47:19,278 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/optimizer.bin
-2025-03-07 01:47:19,282 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/scheduler.bin
-2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler.bin
-2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler_1.bin
-2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler_2.bin
-2025-03-07 01:47:19,287 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/random_states_0.pkl
-2025-03-07 01:47:19,715 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520'
+2025-03-07 01:46:53,369 – INFO: New best roc_auc: 0.738868053771727, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
+2025-03-07 01:46:53,377 – INFO: New best roc_auc: 0.738868053771727, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
+2025-03-07 01:46:53,417 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520
+2025-03-07 01:47:19,180 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/model.safetensors
+2025-03-07 01:47:19,278 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/optimizer.bin
+2025-03-07 01:47:19,282 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/scheduler.bin
+2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler.bin
+2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler_1.bin
+2025-03-07 01:47:19,283 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/sampler_2.bin
+2025-03-07 01:47:19,287 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520/random_states_0.pkl
+2025-03-07 01:47:19,715 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n483520'
  54%|█████▍    | 12000/22220 [1:35:28<59:18,  2.87it/s]2025-03-07 02:09:57,987 – INFO: Evaluate model at step 12000 in epoch 2. Number of training points so far: 547520.
 2025-03-07 02:09:57,988 – INFO: Evaluate model at step 12000 in epoch 2. Number of training points so far: 547520.
 2025-03-07 02:09:59,248 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -303,18 +303,18 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
 
 100%|██████████| 5812/5812 [16:20<00:00,  5.93it/s]
 2025-03-07 02:48:13,358 – INFO: {'accuracy': 0.9259187558480947, 'f1': 0.00029027576197387516, 'roc_auc': 0.7377150551581244, 'share_pos': 0.07409199926865206, 'share_pos_pred': 1.0755116746792287e-05, 's_acc': 0.9259187558480947, 's_balanced_acc': 0.5000725794745247, 's_f1': 0.00029027576197387516, 's_roc_auc': 0.7377150551581244, 'precision_score': 1.0, 'recall_score': 0.00014515894904920887, 'eval_loss_avg': tensor(1.0835, dtype=torch.float64)}
-2025-03-07 02:48:13,548 – INFO: New best roc_auc: 0.7377150551581244, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
+2025-03-07 02:48:13,548 – INFO: New best roc_auc: 0.7377150551581244, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
 2025-03-07 02:48:13,565 – INFO: {'accuracy': 0.9259187558480947, 'f1': 0.00029027576197387516, 'roc_auc': 0.7377150551581244, 'share_pos': 0.07409199926865206, 'share_pos_pred': 1.0755116746792287e-05, 's_acc': 0.9259187558480947, 's_balanced_acc': 0.5000725794745247, 's_f1': 0.00029027576197387516, 's_roc_auc': 0.7377150551581244, 'precision_score': 1.0, 'recall_score': 0.00014515894904920887, 'eval_loss_avg': tensor(1.0835, dtype=torch.float64)}
-2025-03-07 02:48:13,747 – INFO: New best roc_auc: 0.7377150551581244, saving model to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
-2025-03-07 02:48:13,762 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
-2025-03-07 02:48:41,090 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/model.safetensors
-2025-03-07 02:48:41,186 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/optimizer.bin
-2025-03-07 02:48:41,190 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/scheduler.bin
-2025-03-07 02:48:41,190 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler.bin
-2025-03-07 02:48:41,190 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler_1.bin
-2025-03-07 02:48:41,191 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler_2.bin
-2025-03-07 02:48:41,195 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/random_states_0.pkl
-2025-03-07 02:48:41,618 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000'
+2025-03-07 02:48:13,747 – INFO: New best roc_auc: 0.7377150551581244, saving model to results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
+2025-03-07 02:48:13,762 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000
+2025-03-07 02:48:41,090 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/model.safetensors
+2025-03-07 02:48:41,186 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/optimizer.bin
+2025-03-07 02:48:41,190 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/scheduler.bin
+2025-03-07 02:48:41,190 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler.bin
+2025-03-07 02:48:41,190 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler_1.bin
+2025-03-07 02:48:41,191 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/sampler_2.bin
+2025-03-07 02:48:41,195 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000/random_states_0.pkl
+2025-03-07 02:48:41,618 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n600000'
  72%|███████▏  | 16000/22220 [2:18:16<34:26,  3.01it/s]2025-03-07 02:52:45,703 – INFO: Evaluate model at step 16000 in epoch 2. Number of training points so far: 611520.
 2025-03-07 02:52:45,703 – INFO: Evaluate model at step 16000 in epoch 2. Number of training points so far: 611520.
 2025-03-07 02:52:47,184 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
@@ -343,20 +343,20 @@ We detected that you are passing `past_key_values` as a tuple and this is deprec
 2025-03-07 03:34:38,240 – INFO: Epoch 2 finished.
 2025-03-07 03:34:38,241 – INFO: Epoch loss: 0.24113450944423676
 2025-03-07 03:34:38,241 – INFO: Stop run: Total epoch limit of 2 reached.
-2025-03-07 03:34:38,254 – INFO: Saving current state to /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040
-2025-03-07 03:34:38,763 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040'
+2025-03-07 03:34:38,254 – INFO: Saving current state to results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040
+2025-03-07 03:34:38,763 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040'
 2025-03-07 03:34:38,763 – INFO: Model saved.
 2025-03-07 03:34:38,764 – INFO: Evaluate model after final epoch 2.
 2025-03-07 03:34:40,040 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
 2025-03-07 03:34:41,309 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--roc_auc/693acedc576861c3f672089d0699a69bbb74f5105e7075204284e52a12f99098 (last modified on Thu Feb 29 13:00:21 2024) since it couldn't be found locally at evaluate-metric--roc_auc, or remotely on the Hugging Face Hub.
-  0%|          | 0/5812 [00:00<?, ?it/s]2025-03-07 03:35:05,038 – INFO: Model weights saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/model.safetensors
-2025-03-07 03:35:05,132 – INFO: Optimizer state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/optimizer.bin
-2025-03-07 03:35:05,136 – INFO: Scheduler state saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/scheduler.bin
-2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 0 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler.bin
-2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 1 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler_1.bin
-2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 2 saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler_2.bin
-2025-03-07 03:35:05,140 – INFO: Random states saved in /fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/random_states_0.pkl
-2025-03-07 03:35:05,549 – INFO: Model and tokenizer saved to '/fast/groups/hfm-users/pandora-med-box/results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040'
+  0%|          | 0/5812 [00:00<?, ?it/s]2025-03-07 03:35:05,038 – INFO: Model weights saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/model.safetensors
+2025-03-07 03:35:05,132 – INFO: Optimizer state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/optimizer.bin
+2025-03-07 03:35:05,136 – INFO: Scheduler state saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/scheduler.bin
+2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 0 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler.bin
+2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 1 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler_1.bin
+2025-03-07 03:35:05,136 – INFO: Sampler state for dataloader 2 saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/sampler_2.bin
+2025-03-07 03:35:05,140 – INFO: Random states saved in results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040/random_states_0.pkl
+2025-03-07 03:35:05,549 – INFO: Model and tokenizer saved to 'results/2025_03_06_mistral_fgs/001/checkpoint_2_n711040'
 2025-03-07 03:35:05,550 – INFO: Model saved.
 2025-03-07 03:35:05,551 – INFO: Evaluate model after final epoch 2.
 2025-03-07 03:35:06,852 – WARNING: Using the latest cached version of the module from /home/fluebeck/.cache/huggingface/modules/evaluate_modules/metrics/evaluate-metric--glue/05234ba7acc44554edcca0978db5fa3bc600eeee66229abe79ff9887eacaf3ed (last modified on Thu Feb 29 13:00:19 2024) since it couldn't be found locally at evaluate-metric--glue, or remotely on the Hugging Face Hub.
