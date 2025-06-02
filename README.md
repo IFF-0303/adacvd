@@ -2,7 +2,7 @@
 
 **Authors:** Frederike Lübeck, Jonas Wildbeger, Frederik Träuble, Maximilian Mordig, Sergios Gatidis, Andreas Krause, Bernhard Schölkopf
 
-The preprint is available on [ArXiv](...).
+The preprint is available on [ArXiv](https://arxiv.org/abs/2505.24655).
 
 ![AdaCVD Project Overview](fig-overview.png)
 
@@ -94,4 +94,14 @@ python exploration/evaluation/evaluation.py --prediction_dir={prediction_dir} --
 ## Citation
 In case you found our work useful, please consider citing us:
 
-ToDo.
+```
+@misc{lübeck2025adaptablecardiovasculardiseaserisk,
+      title={Adaptable Cardiovascular Disease Risk Prediction from Heterogeneous Data using Large Language Models}, 
+      author={Frederike Lübeck and Jonas Wildberger and Frederik Träuble and Maximilian Mordig and Sergios Gatidis and Andreas Krause and Bernhard Schölkopf},
+      year={2025},
+      eprint={2505.24655},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2505.24655}, 
+}
+```
