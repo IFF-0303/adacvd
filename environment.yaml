@@ -14,7 +14,6 @@ dependencies:
   - pandas
   - numpy
   - setuptools
-  - yaml
   - pyyaml
   - transformers
   - peft
@@ -39,9 +38,8 @@ dependencies:
   - jupytext
   - jupyterlab
   - sentencepiece
-  - scikit-survival
   - lifelines
-  - bitsandbytes
   - h5py
   - pip:
-      - wget
+      - bitsandbytes
+      - scikit-survival
