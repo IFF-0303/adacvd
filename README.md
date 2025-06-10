@@ -48,9 +48,11 @@ pip install -e .
 
 ## Data
 
-This project uses data from the UK Biobank. We provide code for processing the UK Biobank into meaningful representations that can be used for model training. For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md). 
+This project uses data from the UK Biobank.
 
-> Note: Access to UK Biobank data requires institutional approval.
+> Important Note on Data Access: Access to UK Biobank data is restricted and requires institutional approval. You will need to apply directly to the UK Biobank to gain access to the dataset. More information on the application process can be found on their official website: https://www.ukbiobank.ac.uk/enable-your-research.
+
+We provide code for processing the UK Biobank into meaningful representations that can be used for model training. For a detailed description of data preprocessing, see [`data_docuentation/ukb_data_preparation.md`](data_documentation/ukb_data_preparation.md).
 
 ## Model Training
 
