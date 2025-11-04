@@ -43,3 +43,4 @@ dependencies:
   - pip:
       - bitsandbytes
       - scikit-survival
+      - modelscope
