@@ -6,7 +6,7 @@ from copy import deepcopy
 from datetime import datetime, timedelta
 from os.path import join
 from pathlib import Path
-from typing import List, Union
+from typing import Dict, List, Union
 
 import evaluate
 import pandas as pd
@@ -24,6 +24,11 @@ from sklearn.metrics import (
 )
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
+try:  # pragma: no cover - optional dependency
+    from modelscope.hub.snapshot_download import snapshot_download as ms_snapshot_download
+except ModuleNotFoundError:  # pragma: no cover - optional dependency
+    ms_snapshot_download = None
 
 from adacvd.data.ukb_data_utils import WANDB_ENTITY
 from adacvd.training.dataset import get_in_text_tokenization
@@ -178,6 +183,7 @@ class HuggingfaceModel:
         Initialize the Hugging Face model and tokenizer, optionally with PEFT adapters for fine-tuning.
         """
         model_name = self.model_kwargs["name"]
+        model_source = self.model_kwargs.get("source", "huggingface").lower()
         is_finetuning = self.model_kwargs.get("finetuning", False)
         if is_finetuning:
             extra_args = {}
@@ -191,13 +197,25 @@ class HuggingfaceModel:
                 "Loading model from scratch even though model_dir is provided."
             )
 
+        model_location = self._resolve_model_location(model_name, model_source)
+
+        model_kwargs = {"torch_dtype": self.torch_dtype, **extra_args}
+        tokenizer_kwargs: Dict[str, Union[str, bool]] = {"padding_side": "left"}
+
+        trust_remote_code = self.model_kwargs.get("trust_remote_code", False)
+        if trust_remote_code:
+            model_kwargs["trust_remote_code"] = True
+            tokenizer_kwargs["trust_remote_code"] = True
+
         self.network = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            torch_dtype=self.torch_dtype,
-            **extra_args,
+            model_location,
+            **model_kwargs,
         )
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_location,
+            **tokenizer_kwargs,
+        )
         if self.tokenizer.pad_token_id is None:
             self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
         if model_name == "gpt2":
@@ -217,6 +235,43 @@ class HuggingfaceModel:
                 autocast_adapter_dtype=autocast_adapter_dtype,
             )
             self.network.print_trainable_parameters()
+
+    @staticmethod
+    def _download_modelscope_model(model_name: str, download_kwargs: Dict) -> str:
+        """Download a model from ModelScope and return the local path."""
+
+        if ms_snapshot_download is None:
+            raise ImportError(
+                "ModelScope support requires the 'modelscope' package. "
+                "Install it with `pip install modelscope` to use ModelScope models."
+            )
+
+        download_kwargs = download_kwargs or {}
+        try:
+            local_path = ms_snapshot_download(model_name, **download_kwargs)
+        except Exception as exc:  # pragma: no cover - network interaction
+            raise RuntimeError(
+                f"Failed to download ModelScope model '{model_name}': {exc}"
+            ) from exc
+
+        logging.info(
+            "Downloaded ModelScope model '%s' to '%s'", model_name, local_path
+        )
+        return local_path
+
+    def _resolve_model_location(self, model_name: str, model_source: str) -> str:
+        """Return the local identifier/path to load the model and tokenizer from."""
+
+        if model_source not in {"huggingface", "modelscope"}:
+            raise ValueError(
+                f"Unsupported model source '{model_source}'. Supported sources are 'huggingface' and 'modelscope'."
+            )
+
+        if model_source == "modelscope":
+            download_kwargs = self.model_kwargs.get("modelscope_kwargs", {})
+            return self._download_modelscope_model(model_name, download_kwargs)
+
+        return model_name
 
     def initialize_optimizer_and_scheduler(self, optimizer_kwargs, scheduler_kwargs):
         """
